@@ -12,15 +12,15 @@ public extension Storage {
         key: String,
         encode: @escaping (Value) -> Data?,
         decode: @escaping (Data) -> Value?,
-        store: NSUbiquitousKeyValueStore = .default
+        ubiquitousKeyValueStore: NSUbiquitousKeyValueStore = .default
     ) -> Self {
         Storage(
             store: { value in
                 guard let data = value.flatMap(encode) else { return }
-                store.set(data, forKey: key)
+                ubiquitousKeyValueStore.set(data, forKey: key)
             },
             restore: {
-                guard let data = store.data(forKey: key) else { return nil }
+                guard let data = ubiquitousKeyValueStore.data(forKey: key) else { return nil }
                 return decode(data)
             }
         )
@@ -33,7 +33,7 @@ public extension Storage where Value: Codable {
         key: String,
         decoder: JSONDecoder = .init(),
         encoder: JSONEncoder = .init(),
-        store: NSUbiquitousKeyValueStore = .default
+        ubiquitousKeyValueStore: NSUbiquitousKeyValueStore = .default
     ) -> Self {
         .ubiquitousKeyValueStore(
             key: key,
