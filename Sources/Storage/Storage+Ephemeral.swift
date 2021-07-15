@@ -6,7 +6,7 @@
 
 public extension Storage {
     
-    static func inMemory() -> Self {
+    static func ephemeral() -> Self {
         var value: Value?
         return Storage(
             store: { value = $0 },

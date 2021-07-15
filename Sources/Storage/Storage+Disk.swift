@@ -8,7 +8,7 @@ import Foundation
 
 public extension Storage {
     
-    static func fileSystem(
+    static func disk(
         baseURL: URL,
         fileName: String,
         encode: @escaping (Value?) -> Data?,
@@ -26,17 +26,14 @@ public extension Storage {
             }
         )
     }
-}
-
-public extension Storage where Value: Codable {
     
-    static func fileSystem(
+    static func disk(
         baseURL: URL,
         fileName: String,
         decoder: JSONDecoder = .init(),
         encoder: JSONEncoder = .init()
-    ) -> Self {
-        fileSystem(
+    ) -> Self where Value: Codable {
+        disk(
             baseURL: baseURL,
             fileName: fileName,
             encode: { value in
