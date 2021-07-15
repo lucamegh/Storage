@@ -21,7 +21,7 @@ extension Storage {
 final class StorageTests: XCTestCase {
     
     func testValue() {
-        var storage = Storage.testing(Int.self)
+        let storage = Storage.testing(Int.self)
         XCTAssertNil(storage.value)
         storage.value = 42
         XCTAssertEqual(storage.value, 42)

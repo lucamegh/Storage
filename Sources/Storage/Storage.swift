@@ -22,8 +22,12 @@ public struct Storage<Value> {
 public extension Storage {
     
     var value: Value? {
-        get { restore() }
-        set { store(newValue) }
+        get {
+            restore()
+        }
+        nonmutating set {
+            store(newValue)
+        }
     }
     
     func restore(defaultValue: @autoclosure () -> Value) -> Value {
