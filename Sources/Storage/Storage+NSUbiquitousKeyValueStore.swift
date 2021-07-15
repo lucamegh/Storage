@@ -25,16 +25,13 @@ public extension Storage {
             }
         )
     }
-}
-
-public extension Storage where Value: Codable {
     
     static func ubiquitousKeyValueStore(
         key: String,
         decoder: JSONDecoder = .init(),
         encoder: JSONEncoder = .init(),
         ubiquitousKeyValueStore: NSUbiquitousKeyValueStore = .default
-    ) -> Self {
+    ) -> Self where Value: Codable {
         .ubiquitousKeyValueStore(
             key: key,
             encode: { value in

@@ -25,16 +25,13 @@ public extension Storage {
             }
         )
     }
-}
-
-public extension Storage where Value: Codable {
     
     static func userDefaults(
         key: String,
         decoder: JSONDecoder = .init(),
         encoder: JSONEncoder = .init(),
         userDefaults: UserDefaults = .standard
-    ) -> Self {
+    ) -> Self where Value: Codable {
         .userDefaults(
             key: key,
             encode: { value in
