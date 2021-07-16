@@ -50,6 +50,11 @@ weatherStorage = storage.withConditionalRestore { report in
 weatherStorage.restore() // nil if weather report is older than an our
 ```
 
+Storage comes with a convenient property wrapper to simplify working with storages even further:
+```swift
+@Stored(storage: .userDefaults(key: "isFirstLaunch") var isFirstLaunch = true
+```
+
 Since every storage is an instance of the very same `Storage<Value>` type, you can swap storages in-line to make your tests easier to write:
 
 ```swift
