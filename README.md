@@ -1,6 +1,6 @@
 # Storage 🧳
 
-When it comes to persisting data in our apps, we have plenty of choice: `UserDefaults`, `NSUbiquitousKeyValueStore`, Core Data, disk, you name it. What we are missing is a common abstraction layer between all these storage types. Enter Storage, the functional storage abstraction layer.
+When it comes to persisting data in our apps, we have plenty of choice: `UserDefaults`, `NSUbiquitousKeyValueStore`, Core Data, disk, you name it. What we are often missing is a common abstraction layer between all these storage types. Enter Storage, the functional storage abstraction layer.
 
 ```swift
 struct Storage<Value> {
