@@ -47,7 +47,7 @@ weatherStorage = storage.withConditionalRestore { report in
     let oneHourAgo = Calendar.current.date(byAdding: .hour, value: -1, to: Date())!
     return report.timestamp > oneHourAgo
 }
-weatherStorage.restore() // nil if weather report is older than an our
+weatherStorage.restore() // nil if weather report is older than an hour
 ```
 
 Storage comes with a convenient property wrapper to simplify working with storages even further:
